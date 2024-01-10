@@ -4,7 +4,7 @@ import "./Register.scss";
 
 export default function Register() {
     const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+    const [setPassword] = useState("");
 
     const emailRef = useRef();
     const passwordRef = useRef();
