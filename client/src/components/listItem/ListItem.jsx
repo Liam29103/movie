@@ -1,18 +1,18 @@
 import "./listItem.scss";
 import {PlayArrow, Add, ThumbUpAltOutlined, ThumbDownOutlined} from "@material-ui/icons";
-import axios from "axios";
 import {useEffect, useState} from "react";
+import axios from "axios";
 
 export default function ListItem({index, item}) {
     const [isHovered, setIsHovered] = useState(false);
-
     const [movie, setMovie] = useState({});
+
     useEffect(() => {
         const getMovie = async () => {
             try {
-                const res = await axios.get("/movies/find/" + item, {
+                const res = await axios.get("/movies/find" + item, {
                     headers: {
-                        token: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1OWQ0MmYxMmViZTM3NDExMDY5MjFjYiIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE3MDQ4ODc2NjksImV4cCI6MTcwNTMxOTY2OX0.Tn0RojPcJUr2ZT3dISFZz3l5SiaK1e6ecGk83918qas",
+                        token: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1OWQ0MmYxMmViZTM3NDExMDY5MjFjYiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTcwNTQ3ODUyOSwiZXhwIjoxNzA1OTEwNTI5fQ.DX1jTkMGiEUdKd-0ffGqeZNfudBMPFXglWb0dyAThjE",
                     },
                 });
                 setMovie(res.data);
@@ -28,7 +28,7 @@ export default function ListItem({index, item}) {
             style={{left: isHovered && index * 225 - 50 + index * 2.5}}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}>
-            <img src={movie.img} alt="" />
+            <img src="moive.img" alt="" />
             {isHovered && (
                 <>
                     <video src={movie.trailer} autoPlay={true} loop />

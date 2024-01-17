@@ -1,11 +1,11 @@
+import {ArrowBackIosOutlined, ArrowForwardIosOutlined} from "@material-ui/icons";
 import {useRef, useState} from "react";
 import ListItem from "../listItem/ListItem";
 import "./list.scss";
-import {ArrowBackIosOutlined, ArrowForwardIosOutlined} from "@material-ui/icons";
 
 export default function List({list}) {
-    const [slideNumber, setSlideNumber] = useState(0);
     const [isMoved, setIsMoved] = useState(false);
+    const [slideNumber, setSlideNumber] = useState(0);
 
     const listRef = useRef();
 
@@ -23,7 +23,7 @@ export default function List({list}) {
     };
     return (
         <div className="list">
-            <span className="listTittle">{list.title}</span>
+            <span className="listTitle">{list.title}</span>
             <div className="wrapper">
                 <ArrowBackIosOutlined className="sliderArrow left" onClick={() => handleClick("left")} style={{display: !isMoved && "none"}} />
                 <div className="container" ref={listRef}>

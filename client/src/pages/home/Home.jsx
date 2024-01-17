@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from "react";
-import "./Home.scss";
 import Navbar from "../../components/navbar/Navbar";
 import Featured from "../../components/featured/Featured";
+import "./Home.scss";
 import List from "../../components/list/List";
+import {useEffect, useState} from "react";
 import axios from "axios";
 
 const Home = ({type}) => {
@@ -14,10 +14,9 @@ const Home = ({type}) => {
             try {
                 const res = await axios.get(`lists${type ? "?type=" + type : ""}${genre ? "&genre=" + genre : ""}`, {
                     headers: {
-                        token: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1OWQ0MmYxMmViZTM3NDExMDY5MjFjYiIsImlzQWRtaW4iOmZhbHNlLCJpYXQiOjE3MDQ4ODc2NjksImV4cCI6MTcwNTMxOTY2OX0.Tn0RojPcJUr2ZT3dISFZz3l5SiaK1e6ecGk83918qas",
+                        token: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1OWQ0MmYxMmViZTM3NDExMDY5MjFjYiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTcwNTQ3ODUyOSwiZXhwIjoxNzA1OTEwNTI5fQ.DX1jTkMGiEUdKd-0ffGqeZNfudBMPFXglWb0dyAThjE",
                     },
                 });
-
                 setLists(res.data);
             } catch (err) {
                 console.log(err);

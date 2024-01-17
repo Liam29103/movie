@@ -1,12 +1,14 @@
 .list {
     width: 100%;
     margin-top: 10px;
-    .listTittle {
+
+    .listTitle {
         color: white;
         font-size: 20px;
         font-weight: 500;
         margin-left: 50px;
     }
+
     .wrapper {
         position: relative;
         .sliderArrow {
@@ -24,6 +26,7 @@
             &.left {
                 left: 0;
             }
+
             &.right {
                 right: 0;
             }
