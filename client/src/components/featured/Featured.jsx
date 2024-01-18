@@ -1,7 +1,27 @@
 import {InfoOutlined, PlayArrow} from "@material-ui/icons";
 import "./featured.scss";
+import {useEffect, useState} from "react";
+import axios from "axios";
 
 export default function Featured({type}) {
+    const [content, setContent] = useState({});
+
+    useEffect(() => {
+        const getRandomContent = async () => {
+            try {
+                const res = await axios.get(`/movies/random?type=${type}`, {
+                    headers: {
+                        token: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1OWQ0MmYxMmViZTM3NDExMDY5MjFjYiIsImlzQWRtaW4iOnRydWUsImlhdCI6MTcwNTU1MzU5MywiZXhwIjoxNzA1OTg1NTkzfQ.6Z5I7Ci88kmI9qvcTVMiYtO_xu31b2fG7n9IvR-Fcyo",
+                    },
+                });
+                setContent(res.data[0]);
+            } catch (err) {
+                console.log(err);
+            }
+        };
+        getRandomContent();
+    }, [type]);
+
     return (
         <div className="featured">
             {type && (
@@ -25,14 +45,10 @@ export default function Featured({type}) {
                     </select>
                 </div>
             )}
-            <img src="Backgr2.webp " alt="" />
+            <img src={content.img} alt="" />
             <div className="info">
-                <img src="Name.png" alt="" />
-                <span className="desc">
-                    Là một thần đồng, Akali bắt đầu tập huấn với mẹ ngay khi cô biết co tay thành nắm đấm. Mẹ cô chẳng hề nương tay hay dễ dãi, theo một phương
-                    châm nghiêm khắc: Cái gì cần thực thi sẽ phải được thực thi. Khi Kinkou bổ nhiệm cô vào hội ở tuổi mười bốn, cô đã có thể chặt đứt một sợi
-                    xích chỉ bằng tay không.
-                </span>
+                <img src={content.imgTitle} alt="" />
+                <span className="desc">{content.desc}</span>
                 <div className="buttons">
                     <button className="play">
                         <PlayArrow />
